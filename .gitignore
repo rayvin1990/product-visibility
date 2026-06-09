@@ -1,0 +1,14 @@
+.next
+node_modules
+out
+.env
+.env.*
+!.env.example
+*.log
+vercel-token*
+auth.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.zip
