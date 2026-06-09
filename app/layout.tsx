@@ -35,6 +35,9 @@ export const metadata: Metadata = {
     title: "Product Visibility Checklist",
     description:
       "A manual launch visibility check for micro-SaaS and AI tools that need to be found after launch."
+  },
+  verification: {
+    google: "qAvgxASrLcpk0MnK-zQFTL3qZe636USAp4V2U3LIi5M"
   }
 };
 
