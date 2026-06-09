@@ -7,10 +7,20 @@ export default function Page() {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Product Visibility Checklist",
+    url: "https://product-visibility.vercel.app/",
     description:
-      "A lightweight launch visibility checklist for micro-SaaS and AI tool founders.",
+      "Product Visibility Checklist is a lightweight manual launch visibility audit for micro-SaaS and AI tool founders. It checks whether a launched product can be discovered through search engines, directories, communities, and AI recommendations.",
     areaServed: "Worldwide",
-    serviceType: "Launch visibility audit for micro-SaaS and AI tools"
+    serviceType: "Launch visibility audit for micro-SaaS and AI tools",
+    audience: {
+      "@type": "Audience",
+      audienceType: "Solo founders, micro-SaaS builders, and AI tool makers"
+    },
+    provider: {
+      "@type": "Organization",
+      name: "Product Visibility Checklist",
+      url: "https://product-visibility.vercel.app/"
+    }
   };
 
   const faqSchema = {
@@ -32,6 +42,14 @@ export default function Page() {
           "@type": "Answer",
           text: "Small SaaS, AI tools, solo founders, and builders who launched something but are not sure where buyers can discover it."
         }
+      },
+      {
+        "@type": "Question",
+        name: "What does product visibility mean?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Product visibility means the useful places where a buyer, search engine, directory, community thread, or AI answer can discover your product after it launches."
+        }
       }
     ]
   };
@@ -46,10 +64,12 @@ export default function Page() {
       <header className="topbar">
         <div className="topbar-inner">
           <div className="brand">
-            <span className="brand-mark">✓</span>
+            <span className="brand-mark">PV</span>
             Product Visibility Checklist
           </div>
-          <a className="mail-link" href={`mailto:${supportEmail}`}>Email</a>
+          <a className="mail-link" href={`mailto:${supportEmail}`}>
+            Email
+          </a>
         </div>
       </header>
 
@@ -58,14 +78,21 @@ export default function Page() {
           <div className="eyebrow">Free launch visibility check</div>
           <h1>Your product is live. But can people actually find it?</h1>
           <p className="intro">
-            I am making my own product visible first. If you built a micro-SaaS or AI tool,
-            send me the URL and I will manually check the places where new users might discover you.
+            I am making my own product visible first. If you built a micro-SaaS or AI tool, send me the URL
+            and I will manually check the places where new users might discover you.
           </p>
           <p className="note">
             This is intentionally lightweight: no login, no dashboard, no fake automation. Just one useful visibility pass.
           </p>
+          <p className="definition">
+            Product Visibility Checklist is a manual launch visibility audit. It helps small SaaS and AI tool makers find
+            the obvious discovery gaps that appear after launch: missing search pages, missing directories, weak category
+            positioning, community blind spots, and AI recommendation invisibility.
+          </p>
           <div className="hero-actions">
-            <a className="primary" href="#request">Send a product URL</a>
+            <a className="primary" href="#request">
+              Send a product URL
+            </a>
             <span className="email-text">{supportEmail}</span>
           </div>
         </div>
@@ -88,9 +115,9 @@ export default function Page() {
         <div className="panel">
           <h2>Why I am doing this</h2>
           <p>
-            I noticed a simple truth while working on my own product: building is getting cheaper,
-            but being discovered is still hard. Before turning this into software, I want to manually
-            check real products and learn where visibility leaks happen.
+            I noticed a simple truth while working on my own product: building is getting cheaper, but being discovered
+            is still hard. Before turning this into software, I want to manually check real products and learn where
+            visibility leaks happen.
           </p>
         </div>
       </section>
@@ -110,15 +137,31 @@ export default function Page() {
         <div className="faq">
           <div className="faq-item">
             <h3>Is this automated?</h3>
-            <p>Not yet. The first version is manual on purpose, because I want the output to be useful before I build a full tool.</p>
+            <p>
+              Not yet. The first version is manual on purpose, because I want the output to be useful before I build a
+              full tool.
+            </p>
+          </div>
+          <div className="faq-item">
+            <h3>What does product visibility mean?</h3>
+            <p>
+              Product visibility means the useful places where a buyer, search engine, directory, community thread, or
+              AI answer can discover your product after it launches.
+            </p>
           </div>
           <div className="faq-item">
             <h3>Is it really free?</h3>
-            <p>Yes for the first batch. If the same problems repeat, I may later offer paid weekly tracking or done-for-you fixes.</p>
+            <p>
+              Yes for the first batch. If the same problems repeat, I may later offer paid weekly tracking or
+              done-for-you fixes.
+            </p>
           </div>
           <div className="faq-item">
             <h3>Who is this for?</h3>
-            <p>Small SaaS, AI tools, solo founders, and builders who launched something but are not sure where buyers can discover it.</p>
+            <p>
+              Small SaaS, AI tools, solo founders, and builders who launched something but are not sure where buyers can
+              discover it.
+            </p>
           </div>
         </div>
       </section>

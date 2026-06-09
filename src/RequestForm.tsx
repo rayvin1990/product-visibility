@@ -70,43 +70,72 @@ export function RequestForm() {
           <h2>Send me your product URL</h2>
           <p>I will check where your product is visible, missing, or accidentally replaced by someone else.</p>
         </div>
-        <div className="mail-icon">✉</div>
+        <div className="mail-icon">@</div>
       </div>
 
       <label className="field">
         <span>Product name</span>
-        <input value={productName} onChange={(event) => setProductName(event.target.value)} placeholder="Example: Lockscreen Todo" />
+        <input
+          value={productName}
+          onChange={(event) => setProductName(event.target.value)}
+          placeholder="Example: Lockscreen Todo"
+        />
       </label>
 
       <label className="field">
         <span>Product URL</span>
-        <input required type="url" value={productUrl} onChange={(event) => setProductUrl(event.target.value)} placeholder="https://yourproduct.com" />
+        <input
+          required
+          type="url"
+          value={productUrl}
+          onChange={(event) => setProductUrl(event.target.value)}
+          placeholder="https://yourproduct.com"
+        />
       </label>
 
       <div className="field-grid">
         <label className="field">
           <span>Category or buyer</span>
-          <input value={category} onChange={(event) => setCategory(event.target.value)} placeholder="AI tool for marketers..." />
+          <input
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+            placeholder="AI tool for marketers..."
+          />
         </label>
 
         <label className="field">
           <span>Your email</span>
-          <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" />
+          <input
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="you@example.com"
+          />
         </label>
       </div>
 
       <label className="field">
         <span>Anything I should know?</span>
-        <textarea value={notes} onChange={(event) => setNotes(event.target.value)} placeholder="Just launched, Product Hunt page missing, AI tools do not mention us..." />
+        <textarea
+          value={notes}
+          onChange={(event) => setNotes(event.target.value)}
+          placeholder="Just launched, Product Hunt page missing, AI tools do not mention us..."
+        />
       </label>
 
       <div className="button-row">
         <button type="submit">Open email draft</button>
-        <a className="secondary" href={gmailHref} target="_blank" rel="noreferrer">Open Gmail draft</a>
-        <button className="secondary" type="button" onClick={copyRequest}>{copied ? "Copied" : "Copy request"}</button>
+        <a className="secondary" href={gmailHref} target="_blank" rel="noreferrer">
+          Open Gmail draft
+        </a>
+        <button className="secondary" type="button" onClick={copyRequest}>
+          {copied ? "Copied" : "Copy request"}
+        </button>
       </div>
 
-      <p className="helper">Pure frontend MVP: this opens an email or Gmail draft. The sender still needs to press Send.</p>
+      <p className="helper">
+        Pure frontend MVP: this opens an email or Gmail draft. The sender still needs to press Send.
+      </p>
     </form>
   );
 }
