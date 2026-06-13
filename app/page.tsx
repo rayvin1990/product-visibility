@@ -100,6 +100,36 @@ export default function Page() {
         <RequestForm />
       </section>
 
+      <section className="intro-section">
+        <div className="intro-text">
+          <h2>What is product visibility and why does it matter?</h2>
+          <p>
+            Product visibility is how easily your product can be discovered by potential buyers through the
+            channels they actually use every day: Google search, AI recommendations (ChatGPT, Perplexity, Gemini),
+            product directories like Product Hunt and BetaList, developer communities like Hacker News and Indie
+            Hackers, and social platforms like Reddit and X.
+          </p>
+          <p>
+            Most founders assume that once a product is live, people will find it. In practice, a typical
+            micro-SaaS or AI tool launch generates close to zero organic traffic for weeks or months. The
+            product exists but it is invisible on Google search because there are no indexed pages ranking for
+            relevant queries. It is invisible on directories because nobody submitted it. It is invisible in
+            AI recommendations because the few existing mentions lack structured context.
+          </p>
+          <p>
+            A product visibility check reveals these gaps. Rather than guessing why traffic is flat, a
+            launch visibility audit looks across search engines, directories, communities, and AI surfaces to
+            give you a specific repair list. Knowing where you are invisible is the first step toward getting
+            found.
+          </p>
+          <p>
+            Whether you run a small SaaS, a new AI tool, or a solo project, the same principle applies:
+            building is only half the work. Being discoverable is the other half. This checklist helps you
+            find the missing half.
+          </p>
+        </div>
+      </section>
+
       <section className="section-grid">
         <div className="section">
           <h2>What I check</h2>

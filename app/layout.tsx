@@ -3,11 +3,11 @@ import "./styles.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Product Visibility Checklist",
+    default: "Product Visibility Checklist – Free Launch Visibility Check for SaaS & AI Tools",
     template: "%s | Product Visibility Checklist"
   },
   description:
-    "A lightweight launch visibility checklist for micro-SaaS and AI tool founders. Send a product URL and find where buyers can actually discover it.",
+    "Free manual launch visibility audit for micro-SaaS and AI tool founders. Check where your product is invisible on Google search, directories, communities, and AI recommendations after launch.",
   metadataBase: new URL("https://product-visibility.vercel.app"),
   applicationName: "Product Visibility Checklist",
   keywords: [
@@ -23,18 +23,18 @@ export const metadata: Metadata = {
     canonical: "/"
   },
   openGraph: {
-    title: "Product Visibility Checklist",
+    title: "Product Visibility Checklist – Free Launch Visibility Check for SaaS & AI Tools",
     description:
-      "Find where your SaaS is invisible after launch across Google, directories, communities, and AI recommendations.",
+      "Free manual launch visibility audit. Check where your micro-SaaS or AI tool is invisible across Google search, directories, communities, and AI recommendations after launch.",
     url: "https://product-visibility.vercel.app/",
     siteName: "Product Visibility Checklist",
     type: "website"
   },
   twitter: {
     card: "summary",
-    title: "Product Visibility Checklist",
+    title: "Product Visibility Checklist – Free Launch Visibility Check",
     description:
-      "A manual launch visibility check for micro-SaaS and AI tools that need to be found after launch."
+      "Free manual launch visibility audit. Check where your micro-SaaS or AI tool is invisible on Google, directories, communities, and AI recommendations."
   },
   verification: {
     google: "qAvgxASrLcpk0MnK-zQFTL3qZe636USAp4V2U3LIi5M"

@@ -31,6 +31,36 @@ a {
   min-height: 100vh;
 }
 
+.intro-section {
+  max-width: 1120px;
+  padding: 0 20px 16px;
+  margin: 0 auto;
+}
+
+.intro-text {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 32px 36px;
+}
+
+.intro-text h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.intro-text p {
+  margin: 16px 0 0;
+  color: #374151;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.intro-text p:first-of-type {
+  margin-top: 20px;
+}
+
 .topbar {
   border-bottom: 1px solid var(--line);
   background: rgba(250, 248, 241, 0.92);
@@ -404,5 +434,11 @@ button[type="submit"] {
 
   .hero {
     padding-top: 38px;
+  }
+}
+
+@media (max-width: 640px) {
+  .intro-text {
+    padding: 24px 20px;
   }
 }
