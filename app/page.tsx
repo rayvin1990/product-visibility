@@ -1,4 +1,5 @@
 import { RequestForm } from "../src/RequestForm";
+import Link from "next/link";
 
 const supportEmail = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "you@example.com";
 
@@ -67,9 +68,12 @@ export default function Page() {
             <span className="brand-mark">PV</span>
             Product Visibility Checklist
           </div>
-          <a className="mail-link" href={`mailto:${supportEmail}`}>
-            Email
-          </a>
+          <nav className="top-nav">
+            <Link className="nav-link" href="/blog">Blog</Link>
+            <a className="mail-link" href={`mailto:${supportEmail}`}>
+              Email
+            </a>
+          </nav>
         </div>
       </header>
 
