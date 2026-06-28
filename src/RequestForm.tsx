@@ -10,7 +10,10 @@ export function RequestForm() {
   const [category, setCategory] = useState("");
   const [email, setEmail] = useState("");
   const [notes, setNotes] = useState("");
+  const [website, setWebsite] = useState("");
   const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
   const requestText = useMemo(() => {
     return [
@@ -52,9 +55,41 @@ export function RequestForm() {
     return `https://mail.google.com/mail/?${params.toString()}`;
   }, [productName, productUrl, requestText]);
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    window.location.href = mailtoHref;
+    setStatus("submitting");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/visibility-request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          productName,
+          productUrl,
+          category,
+          email,
+          notes,
+          website
+        })
+      });
+
+      const data = (await response.json()) as { ok?: boolean; message?: string };
+
+      if (!response.ok || !data.ok) {
+        setStatus("error");
+        setMessage(data.message || "Could not submit the request. You can still use the email fallback.");
+        return;
+      }
+
+      setStatus("success");
+      setMessage(data.message || "Thanks. I will review your product URL.");
+    } catch {
+      setStatus("error");
+      setMessage("Could not submit the request. You can still use the email fallback.");
+    }
   }
 
   async function copyRequest() {
@@ -106,6 +141,7 @@ export function RequestForm() {
         <label className="field">
           <span>Your email</span>
           <input
+            required
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
@@ -123,18 +159,35 @@ export function RequestForm() {
         />
       </label>
 
+      <label className="hidden-field" aria-hidden="true">
+        <span>Website</span>
+        <input
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(event) => setWebsite(event.target.value)}
+        />
+      </label>
+
       <div className="button-row">
-        <button type="submit">Open email draft</button>
+        <button type="submit" disabled={status === "submitting"}>
+          {status === "submitting" ? "Submitting..." : "Send request"}
+        </button>
         <a className="secondary" href={gmailHref} target="_blank" rel="noreferrer">
           Open Gmail draft
+        </a>
+        <a className="secondary" href={mailtoHref}>
+          Open email draft
         </a>
         <button className="secondary" type="button" onClick={copyRequest}>
           {copied ? "Copied" : "Copy request"}
         </button>
       </div>
 
+      {message ? <p className={`form-message ${status}`}>{message}</p> : null}
+
       <p className="helper">
-        Pure frontend MVP: this opens an email or Gmail draft. The sender still needs to press Send.
+        This form now submits directly. Gmail, email draft, and copy are kept as fallbacks.
       </p>
     </form>
   );
