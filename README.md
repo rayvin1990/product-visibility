@@ -1,5 +1,12 @@
 # Product Visibility Checklist
 
+Product Visibility Checklist is a lightweight launch visibility audit for micro-SaaS and AI tool founders. It checks whether a product can be discovered through search, directories, communities, and AI recommendations after launch.
+
+**Live:** https://product-visibility.vercel.app/
+**Guide:** https://product-visibility.vercel.app/blog/product-visibility-vs-seo-vs-geo
+
+---
+
 A clean landing page for collecting product URLs from micro-SaaS and AI tool founders.
 
 ## What It Does
