@@ -1,7 +1,7 @@
 import { RequestForm } from "../src/RequestForm";
 import Link from "next/link";
 
-const supportEmail = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "you@example.com";
+const supportEmail = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "";
 
 export default function Page() {
   const serviceSchema = {
@@ -70,9 +70,11 @@ export default function Page() {
           </div>
           <nav className="top-nav">
             <Link className="nav-link" href="/blog">Blog</Link>
-            <a className="mail-link" href={`mailto:${supportEmail}`}>
-              Email
-            </a>
+            {supportEmail ? (
+              <a className="mail-link" href={`mailto:${supportEmail}`}>
+                Email
+              </a>
+            ) : null}
           </nav>
         </div>
       </header>
@@ -97,7 +99,7 @@ export default function Page() {
             <a className="primary" href="#request">
               Send a product URL
             </a>
-            <span className="email-text">{supportEmail}</span>
+            {supportEmail ? <span className="email-text">{supportEmail}</span> : null}
           </div>
         </div>
 

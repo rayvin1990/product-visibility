@@ -102,9 +102,12 @@ async function sendNotification(lead: Record<string, string>) {
   }
 
   const port = Number(getEnv("VISIBILITY_SMTP_PORT", "SMTP_PORT") || "587");
-  const notifyTo =
-    getEnv("VISIBILITY_NOTIFY_TO", "PRODUCT_VISIBILITY_NOTIFY_TO", "NEXT_PUBLIC_SUPPORT_EMAIL") || "you@example.com";
+  const notifyTo = getEnv("VISIBILITY_NOTIFY_TO", "PRODUCT_VISIBILITY_NOTIFY_TO", "NEXT_PUBLIC_SUPPORT_EMAIL");
   const from = getEnv("VISIBILITY_NOTIFY_FROM", "PRODUCT_VISIBILITY_NOTIFY_FROM") || user;
+
+  if (!notifyTo) {
+    return false;
+  }
 
   const transport = nodemailer.createTransport({
     host,
@@ -194,6 +197,19 @@ export async function POST(request: NextRequest) {
     notificationSent = await sendNotification(lead);
   } catch (error) {
     console.error("Failed to send visibility request notification", error);
+  }
+
+  if (process.env.VERCEL && !notificationSent) {
+    return NextResponse.json(
+      {
+        ok: false,
+        id: lead.id,
+        localBackupSaved,
+        notificationSent,
+        message: "Direct submission is not fully configured yet. Please use the email or copy fallback.",
+      },
+      { status: 503 },
+    );
   }
 
   return NextResponse.json({

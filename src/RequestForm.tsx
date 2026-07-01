@@ -2,7 +2,7 @@
 
 import { FormEvent, useMemo, useState } from "react";
 
-const SUPPORT_EMAIL = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "you@example.com";
+const SUPPORT_EMAIL = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "";
 
 export function RequestForm() {
   const [productName, setProductName] = useState("");
@@ -38,11 +38,19 @@ export function RequestForm() {
   }, [category, email, notes, productName, productUrl]);
 
   const mailtoHref = useMemo(() => {
+    if (!SUPPORT_EMAIL) {
+      return "";
+    }
+
     const subject = `Launch visibility check: ${productName || productUrl || "new product"}`;
     return `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(requestText)}`;
   }, [productName, productUrl, requestText]);
 
   const gmailHref = useMemo(() => {
+    if (!SUPPORT_EMAIL) {
+      return "";
+    }
+
     const subject = `Launch visibility check: ${productName || productUrl || "new product"}`;
     const params = new URLSearchParams({
       view: "cm",
@@ -173,12 +181,16 @@ export function RequestForm() {
         <button type="submit" disabled={status === "submitting"}>
           {status === "submitting" ? "Submitting..." : "Send request"}
         </button>
-        <a className="secondary" href={gmailHref} target="_blank" rel="noreferrer">
-          Open Gmail draft
-        </a>
-        <a className="secondary" href={mailtoHref}>
-          Open email draft
-        </a>
+        {SUPPORT_EMAIL ? (
+          <>
+            <a className="secondary" href={gmailHref} target="_blank" rel="noreferrer">
+              Open Gmail draft
+            </a>
+            <a className="secondary" href={mailtoHref}>
+              Open email draft
+            </a>
+          </>
+        ) : null}
         <button className="secondary" type="button" onClick={copyRequest}>
           {copied ? "Copied" : "Copy request"}
         </button>
