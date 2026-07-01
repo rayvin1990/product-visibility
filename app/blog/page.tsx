@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "product-visibility-vs-seo-vs-geo",
+    title: "Product visibility vs SEO vs GEO",
+    date: "July 1, 2026",
+    desc: "A practical definition of product visibility, how it differs from SEO and GEO, and what a launch visibility check should inspect.",
+  },
+  {
     slug: "why-your-product-gets-zero-traffic-after-launch",
     title: "Why your product gets zero traffic after launch",
     date: "June 13, 2026",

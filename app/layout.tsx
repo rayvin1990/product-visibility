@@ -3,7 +3,7 @@ import "./styles.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Product Visibility Checklist – Free Launch Visibility Check for SaaS & AI Tools",
+    default: "Product Visibility Checklist - Free Launch Visibility Check for SaaS & AI Tools",
     template: "%s | Product Visibility Checklist"
   },
   description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: "/"
   },
   openGraph: {
-    title: "Product Visibility Checklist – Free Launch Visibility Check for SaaS & AI Tools",
+    title: "Product Visibility Checklist - Free Launch Visibility Check for SaaS & AI Tools",
     description:
       "Free manual launch visibility audit. Check where your micro-SaaS or AI tool is invisible across Google search, directories, communities, and AI recommendations after launch.",
     url: "https://product-visibility.vercel.app/",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Product Visibility Checklist – Free Launch Visibility Check",
+    title: "Product Visibility Checklist - Free Launch Visibility Check",
     description:
       "Free manual launch visibility audit. Check where your micro-SaaS or AI tool is invisible on Google, directories, communities, and AI recommendations."
   },
