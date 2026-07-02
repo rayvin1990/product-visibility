@@ -10,6 +10,7 @@ type VisibilityRequestPayload = {
   productName?: unknown;
   productUrl?: unknown;
   category?: unknown;
+  offerTier?: unknown;
   email?: unknown;
   notes?: unknown;
   website?: unknown;
@@ -130,6 +131,7 @@ async function sendNotification(lead: Record<string, string>) {
       `Product name: ${lead.productName || "(not provided)"}`,
       `Product URL: ${lead.productUrl}`,
       `Category / buyer: ${lead.category || "(not provided)"}`,
+      `Interested in: ${lead.offerTier || "(not provided)"}`,
       `Contact email: ${lead.email}`,
       "",
       "Notes:",
@@ -177,6 +179,7 @@ export async function POST(request: NextRequest) {
     productName: text(payload.productName, 200),
     productUrl,
     category: text(payload.category, 300),
+    offerTier: text(payload.offerTier, 100),
     email,
     notes: text(payload.notes, 2000),
     userAgent: request.headers.get("user-agent") || "",

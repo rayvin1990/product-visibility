@@ -10,12 +10,12 @@ export default function Page() {
     name: "Product Visibility Checklist",
     url: "https://product-visibility.vercel.app/",
     description:
-      "Product Visibility Checklist is a lightweight manual launch visibility audit for micro-SaaS and AI tool founders. It checks whether a launched product can be discovered through search engines, directories, communities, and AI recommendations.",
+      "Product Visibility Checklist is a manual AI visibility snapshot for B2B SaaS, AI tools, and product teams. It checks whether AI answers understand, cite, and recommend a product, which competitors appear instead, and what source gaps to repair.",
     areaServed: "Worldwide",
-    serviceType: "Launch visibility audit for micro-SaaS and AI tools",
+    serviceType: "Product visibility audit and AI visibility snapshot for B2B products",
     audience: {
       "@type": "Audience",
-      audienceType: "Solo founders, micro-SaaS builders, and AI tool makers"
+      audienceType: "B2B SaaS teams, AI tool makers, DTC brands, and marketing owners"
     },
     provider: {
       "@type": "Organization",
@@ -33,7 +33,7 @@ export default function Page() {
         name: "Is this automated?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Not yet. The first version is manual on purpose, so the output can be useful before a full tool is built."
+          text: "Not fully. The current offer is a manual and agent-assisted snapshot, so the output can include judgment, competitor context, and a concrete repair path before a full monitoring dashboard is built."
         }
       },
       {
@@ -41,7 +41,7 @@ export default function Page() {
         name: "Who is this for?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Small SaaS, AI tools, solo founders, and builders who launched something but are not sure where buyers can discover it."
+          text: "B2B SaaS teams, AI tool makers, DTC brands, agencies, and marketing owners who need to know whether AI answers recommend them or their competitors."
         }
       },
       {
@@ -49,7 +49,7 @@ export default function Page() {
         name: "What does product visibility mean?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Product visibility means the useful places where a buyer, search engine, directory, community thread, or AI answer can discover your product after it launches."
+          text: "Product visibility means whether buyers, search engines, directories, communities, and AI answer engines can discover, understand, cite, and recommend a product."
         }
       }
     ]
@@ -81,25 +81,30 @@ export default function Page() {
 
       <section className="hero">
         <div>
-          <div className="eyebrow">Free launch visibility check</div>
-          <h1>Your product is live. But can people actually find it?</h1>
+          <div className="eyebrow">Product Visibility Audit for B2B products</div>
+          <h1>Find out if AI answers recommend you or your competitors.</h1>
           <p className="intro">
-            I am making my own product visible first. If you built a micro-SaaS or AI tool, send me the URL
-            and I will manually check the places where new users might discover you.
+            A manual and agent-assisted audit for SaaS, AI tools, DTC brands, and marketing teams that need
+            to know how ChatGPT, Perplexity, Gemini, and Google AI answers understand their product.
           </p>
           <p className="note">
-            This is intentionally lightweight: no login, no dashboard, no fake automation. Just one useful visibility pass.
+            Built for teams that need a decision-ready report, not another dashboard to configure.
           </p>
           <p className="definition">
-            Product Visibility Checklist is a manual launch visibility audit. It helps small SaaS and AI tool makers find
-            the obvious discovery gaps that appear after launch: missing search pages, missing directories, weak category
-            positioning, community blind spots, and AI recommendation invisibility.
+            You get a prompt-level visibility snapshot, competitor mentions, cited source gaps, and a repair
+            checklist for the pages, directories, reviews, and entity signals that should be improved first.
           </p>
           <div className="hero-actions">
             <a className="primary" href="#request">
-              Send a product URL
+              Request a snapshot
             </a>
             {supportEmail ? <span className="email-text">{supportEmail}</span> : null}
+          </div>
+          <div className="proof-strip" aria-label="Audit surfaces">
+            <span>ChatGPT</span>
+            <span>Perplexity</span>
+            <span>Gemini</span>
+            <span>Google AI answers</span>
           </div>
         </div>
 
@@ -108,31 +113,51 @@ export default function Page() {
 
       <section className="intro-section">
         <div className="intro-text">
-          <h2>What is product visibility and why does it matter?</h2>
+          <h2>Product visibility is now a revenue and positioning problem.</h2>
           <p>
-            Product visibility is how easily your product can be discovered by potential buyers through the
-            channels they actually use every day: Google search, AI recommendations (ChatGPT, Perplexity, Gemini),
-            product directories like Product Hunt and BetaList, developer communities like Hacker News and Indie
-            Hackers, and social platforms like Reddit and X.
+            Buyers no longer discover products only through blue links. They ask AI assistants for shortlists,
+            alternatives, vendor comparisons, and purchase recommendations. If those answers mention competitors
+            but not you, the issue is not only SEO. It is a visibility gap across prompts, sources, citations,
+            and entity clarity.
           </p>
           <p>
-            Most founders assume that once a product is live, people will find it. In practice, a typical
-            micro-SaaS or AI tool launch generates close to zero organic traffic for weeks or months. The
-            product exists but it is invisible on Google search because there are no indexed pages ranking for
-            relevant queries. It is invisible on directories because nobody submitted it. It is invisible in
-            AI recommendations because the few existing mentions lack structured context.
+            This service checks how AI systems describe your product, whether they cite useful sources, which
+            competitors appear in your category, and what repair work can realistically be done this week. It is
+            designed for operators who need a clear before and after, not a vague GEO report.
           </p>
           <p>
-            A product visibility check reveals these gaps. Rather than guessing why traffic is flat, a
-            launch visibility audit looks across search engines, directories, communities, and AI surfaces to
-            give you a specific repair list. Knowing where you are invisible is the first step toward getting
-            found.
+            The first version stays manual on purpose. AI answers are noisy, prompt-sensitive, and source-dependent.
+            A useful report needs judgment: which gaps matter, which claims are risky, and which fixes should happen
+            before monitoring is worth paying for.
           </p>
+        </div>
+      </section>
+
+      <section className="evidence">
+        <div>
+          <h2>What the snapshot answers</h2>
           <p>
-            Whether you run a small SaaS, a new AI tool, or a solo project, the same principle applies:
-            building is only half the work. Being discoverable is the other half. This checklist helps you
-            find the missing half.
+            The report turns weak AI visibility into a concrete matrix of prompts, competitors, sources, and
+            repair actions.
           </p>
+        </div>
+        <div className="evidence-grid">
+          <div className="evidence-item">
+            <strong>Prompt coverage</strong>
+            <span>Which buyer-intent prompts mention you, ignore you, or confuse your category.</span>
+          </div>
+          <div className="evidence-item">
+            <strong>Competitor presence</strong>
+            <span>Which products appear instead of you, and what sources make them more recommendable.</span>
+          </div>
+          <div className="evidence-item">
+            <strong>Source gaps</strong>
+            <span>Missing comparison pages, directory listings, reviews, launch pages, and entity signals.</span>
+          </div>
+          <div className="evidence-item">
+            <strong>Repair path</strong>
+            <span>A prioritized 7-day fix list before any recurring monitoring or dashboard work.</span>
+          </div>
         </div>
       </section>
 
@@ -140,31 +165,43 @@ export default function Page() {
         <div className="section">
           <h2>What I check</h2>
           <ul className="check-list">
-            <li>Can Google find your brand and the words buyers actually search?</li>
-            <li>Are obvious launch pages, directories, and alternative pages missing?</li>
-            <li>Are people discussing the problem in communities without mentioning you?</li>
-            <li>Would AI tools recommend competitors before they mention your product?</li>
-            <li>What are the first 5-10 surfaces worth fixing this week?</li>
+            <li>Can AI answers explain what your product is and who should use it?</li>
+            <li>Which competitors appear for high-intent category and alternative prompts?</li>
+            <li>Which sources are cited, and which credible sources are missing?</li>
+            <li>Do your pages support comparison, use-case, and category-level recommendations?</li>
+            <li>Which repairs are worth doing before monthly tracking is introduced?</li>
           </ul>
         </div>
 
         <div className="panel">
-          <h2>Why I am doing this</h2>
+          <h2>Who it is for</h2>
           <p>
-            I noticed a simple truth while working on my own product: building is getting cheaper, but being discovered
-            is still hard. Before turning this into software, I want to manually check real products and learn where
-            visibility leaks happen.
+            B2B SaaS teams, AI tool makers, DTC product brands, and agencies that already care about search,
+            category positioning, or lead quality. If a competitor being recommended by AI would matter to your
+            pipeline, this is the right stage for a snapshot.
           </p>
         </div>
       </section>
 
       <section className="output">
-        <h2>You get back</h2>
+        <h2>One audit workflow</h2>
         <div className="output-grid">
-          <div className="output-item">A short visibility gap list</div>
-          <div className="output-item">Search and directory notes</div>
-          <div className="output-item">A 7-day repair checklist</div>
-          <div className="output-item">No sales call required</div>
+          <div className="output-item">
+            <strong>1. $49 mini snapshot</strong>
+            <span>5 prompts, 2 AI answer engines, competitor mentions, and 3 repair actions.</span>
+          </div>
+          <div className="output-item">
+            <strong>2. $199 readiness audit</strong>
+            <span>10 prompts, source matrix, website/entity scan, and a 7-day repair plan.</span>
+          </div>
+          <div className="output-item">
+            <strong>3. $499 repair pack</strong>
+            <span>Done-for-you page, schema, directory, and source fixes after the audit.</span>
+          </div>
+          <div className="output-item">
+            <strong>4. Monitoring later</strong>
+            <span>Weekly tracking only after the manual report proves a recurring need.</span>
+          </div>
         </div>
       </section>
 
@@ -174,29 +211,29 @@ export default function Page() {
           <div className="faq-item">
             <h3>Is this automated?</h3>
             <p>
-              Not yet. The first version is manual on purpose, because I want the output to be useful before I build a
-              full tool.
+              Not fully. It is manual and agent-assisted so the report can include judgment, competitor context, and
+              practical repair advice before a full dashboard exists.
             </p>
           </div>
           <div className="faq-item">
             <h3>What does product visibility mean?</h3>
             <p>
-              Product visibility means the useful places where a buyer, search engine, directory, community thread, or
-              AI answer can discover your product after it launches.
+              Product visibility means whether buyers, search engines, directories, communities, and AI answer engines
+              can discover, understand, cite, and recommend your product.
             </p>
           </div>
           <div className="faq-item">
-            <h3>Is it really free?</h3>
+            <h3>Why not sell a dashboard immediately?</h3>
             <p>
-              Yes for the first batch. If the same problems repeat, I may later offer paid weekly tracking or
-              done-for-you fixes.
+              AI answers vary by prompt, model, region, and source freshness. A snapshot and repair plan should come
+              before recurring monitoring, otherwise the dashboard only measures confusion.
             </p>
           </div>
           <div className="faq-item">
             <h3>Who is this for?</h3>
             <p>
-              Small SaaS, AI tools, solo founders, and builders who launched something but are not sure where buyers can
-              discover it.
+              B2B SaaS teams, AI tools, DTC brands, agencies, and marketing owners who need to know whether AI answers
+              recommend them, ignore them, or describe them inaccurately.
             </p>
           </div>
         </div>

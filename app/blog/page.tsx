@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Notes on product visibility, launch strategy, and getting found after shipping.",
+    "Notes on product visibility, AI recommendation visibility, SEO, GEO, and getting found by buyers.",
 };
 
 const posts = [
@@ -12,7 +12,7 @@ const posts = [
     slug: "product-visibility-vs-seo-vs-geo",
     title: "Product visibility vs SEO vs GEO",
     date: "July 1, 2026",
-    desc: "A practical definition of product visibility, how it differs from SEO and GEO, and what a launch visibility check should inspect.",
+    desc: "A practical definition of product visibility, how it differs from SEO and GEO, and what an AI visibility snapshot should inspect.",
   },
   {
     slug: "why-your-product-gets-zero-traffic-after-launch",
@@ -41,7 +41,7 @@ export default function BlogPage() {
       <div className="blog-container">
         <h1>Blog</h1>
         <p className="blog-subtitle">
-          Notes on product visibility, launch problems, and getting found.
+          Notes on product visibility, AI recommendations, SEO, GEO, and getting found by buyers.
         </p>
         <div className="post-list">
           {posts.map((p) => (
