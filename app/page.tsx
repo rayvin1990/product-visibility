@@ -1,4 +1,5 @@
 import { RequestForm } from "../src/RequestForm";
+import { VisibilityAnalytics } from "../src/VisibilityAnalytics";
 import Link from "next/link";
 
 const supportEmail = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "";
@@ -57,6 +58,7 @@ export default function Page() {
 
   return (
     <main className="page">
+      <VisibilityAnalytics />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceSchema, faqSchema]) }}
@@ -69,9 +71,9 @@ export default function Page() {
             Product Visibility Checklist
           </div>
           <nav className="top-nav">
-            <Link className="nav-link" href="/blog">Blog</Link>
+            <Link className="nav-link" href="/blog" data-track="nav_blog_click">Blog</Link>
             {supportEmail ? (
-              <a className="mail-link" href={`mailto:${supportEmail}`}>
+              <a className="mail-link" href={`mailto:${supportEmail}`} data-track="nav_email_click">
                 Email
               </a>
             ) : null}
@@ -95,7 +97,7 @@ export default function Page() {
             checklist for the pages, directories, reviews, and entity signals that should be improved first.
           </p>
           <div className="hero-actions">
-            <a className="primary" href="#request">
+            <a className="primary" href="#request" data-track="hero_request_snapshot_click">
               Request a snapshot
             </a>
             {supportEmail ? <span className="email-text">{supportEmail}</span> : null}

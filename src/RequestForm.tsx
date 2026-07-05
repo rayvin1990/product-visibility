@@ -2,6 +2,8 @@
 
 import { FormEvent, useMemo, useState } from "react";
 
+import { trackVisibilityEvent } from "./trackVisibilityEvent";
+
 const SUPPORT_EMAIL = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "";
 
 export function RequestForm() {
@@ -68,6 +70,11 @@ export function RequestForm() {
     event.preventDefault();
     setStatus("submitting");
     setMessage("");
+    trackVisibilityEvent("lead_form_submit_attempt", {
+      offerTier,
+      hasProductName: Boolean(productName),
+      hasCategory: Boolean(category),
+    });
 
     try {
       const response = await fetch("/api/visibility-request", {
@@ -86,25 +93,45 @@ export function RequestForm() {
         })
       });
 
-      const data = (await response.json()) as { ok?: boolean; message?: string };
+      const data = (await response.json()) as {
+        ok?: boolean;
+        message?: string;
+        notificationSent?: boolean;
+        webhookSent?: boolean;
+      };
 
       if (!response.ok || !data.ok) {
         setStatus("error");
         setMessage(data.message || "Could not submit directly. Please use Gmail draft or email draft below.");
+        trackVisibilityEvent("lead_form_submit_error", {
+          offerTier,
+          status: response.status,
+          message: data.message || "",
+        });
         return;
       }
 
       setStatus("success");
       setMessage(data.message || "Thanks. I will review your product and AI visibility gaps.");
+      trackVisibilityEvent("lead_form_submit_success", {
+        offerTier,
+        notificationSent: Boolean(data.notificationSent),
+        webhookSent: Boolean(data.webhookSent),
+      });
     } catch {
       setStatus("error");
       setMessage("Could not submit directly. Please use Gmail draft or email draft below.");
+      trackVisibilityEvent("lead_form_submit_error", {
+        offerTier,
+        status: "network",
+      });
     }
   }
 
   async function copyRequest() {
     await navigator.clipboard.writeText(requestText);
     setCopied(true);
+    trackVisibilityEvent("copy_request_click", { offerTier });
     window.setTimeout(() => setCopied(false), 1600);
   }
 
@@ -150,7 +177,13 @@ export function RequestForm() {
 
         <label className="field">
           <span>Interested in</span>
-          <select value={offerTier} onChange={(event) => setOfferTier(event.target.value)}>
+          <select
+            value={offerTier}
+            onChange={(event) => {
+              setOfferTier(event.target.value);
+              trackVisibilityEvent("offer_tier_change", { offerTier: event.target.value });
+            }}
+          >
             <option>$49 mini snapshot</option>
             <option>$199 readiness audit</option>
             <option>$499 repair pack</option>
@@ -195,10 +228,20 @@ export function RequestForm() {
         </button>
         {SUPPORT_EMAIL ? (
           <>
-            <a className="secondary" href={gmailHref} target="_blank" rel="noreferrer">
+            <a
+              className="secondary"
+              href={gmailHref}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => trackVisibilityEvent("gmail_draft_click", { offerTier })}
+            >
               Open Gmail draft
             </a>
-            <a className="secondary" href={mailtoHref}>
+            <a
+              className="secondary"
+              href={mailtoHref}
+              onClick={() => trackVisibilityEvent("email_draft_click", { offerTier })}
+            >
               Open email draft
             </a>
           </>

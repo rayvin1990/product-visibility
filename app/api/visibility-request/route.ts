@@ -93,6 +93,25 @@ async function saveLead(lead: Record<string, unknown>) {
   return filePath;
 }
 
+async function sendDataWebhook(record: Record<string, unknown>) {
+  const url = getEnv("VISIBILITY_DATA_WEBHOOK_URL", "PRODUCT_VISIBILITY_DATA_WEBHOOK_URL");
+  if (!url) {
+    return false;
+  }
+
+  const secret = getEnv("VISIBILITY_DATA_WEBHOOK_SECRET", "PRODUCT_VISIBILITY_DATA_WEBHOOK_SECRET");
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(secret ? { "x-visibility-secret": secret } : {}),
+    },
+    body: JSON.stringify(record),
+  });
+
+  return response.ok;
+}
+
 async function sendNotification(lead: Record<string, string>) {
   const host = getEnv("VISIBILITY_SMTP_HOST", "SMTP_HOST");
   const user = getEnv("VISIBILITY_SMTP_USER", "SMTP_USER", "GMAIL_USER");
@@ -188,6 +207,7 @@ export async function POST(request: NextRequest) {
 
   let localBackupSaved = false;
   let notificationSent = false;
+  let webhookSent = false;
 
   try {
     await saveLead(lead);
@@ -202,13 +222,23 @@ export async function POST(request: NextRequest) {
     console.error("Failed to send visibility request notification", error);
   }
 
-  if (process.env.VERCEL && !notificationSent) {
+  try {
+    webhookSent = await sendDataWebhook({
+      type: "visibility_lead",
+      ...lead,
+    });
+  } catch (error) {
+    console.error("Failed to send visibility lead webhook", error);
+  }
+
+  if (process.env.VERCEL && !notificationSent && !webhookSent) {
     return NextResponse.json(
       {
         ok: false,
         id: lead.id,
         localBackupSaved,
         notificationSent,
+        webhookSent,
         message: "Direct submission is not fully configured yet. Please use the email or copy fallback.",
       },
       { status: 503 },
@@ -220,8 +250,9 @@ export async function POST(request: NextRequest) {
     id: lead.id,
     localBackupSaved,
     notificationSent,
-    message: notificationSent
+    webhookSent,
+    message: notificationSent || webhookSent
       ? "Thanks. I received the request and will review your product URL."
-      : "Thanks. I saved the request. Email notification is not configured yet.",
+      : "Thanks. I saved the request. Email notification and webhook are not configured yet.",
   });
 }
